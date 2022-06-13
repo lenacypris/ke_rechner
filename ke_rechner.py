@@ -1,7 +1,8 @@
+from turtle import write_docstringdict
 import streamlit as st
 import pandas as pd
 
-st.title('🥰 KE Rechner')
+st.title('KE Rechner')
 
 with st.form(key='columns_in_form'):
     c1, c2, c3, c4 = st.columns(4)
@@ -12,7 +13,7 @@ with st.form(key='columns_in_form'):
     with c3:
         grams = st.text_input('Grams')
     with c4:
-        factor = st.text_input('Factor')
+        factor = st.text_input('Factor', value=1)
     addButton = st.form_submit_button(label = 'Add')
 
 c1, c2, c3, c4 = st.columns(4)
@@ -45,6 +46,7 @@ if addButton:
             st.write(str(st.session_state.df.IE.iloc[row]))
 
 st.write('')
+
 sum_ke = st.session_state.df.KE.apply(lambda x: float(x))
 sum_ie = st.session_state.df.IE.apply(lambda x: float(x))
 c1, c2 = st.columns(2)
@@ -54,14 +56,9 @@ with c2:
     st.write(f'Total IE: {sum_ie.sum()}')
 
 
-
-
-
-with st.form(key='test'):
+with st.form(key='refresh'):
     refreshButton = st.form_submit_button(label = 'Refresh')
 if refreshButton:
     st.session_state.df = pd.DataFrame(columns=['Food', 'Grams', 'KE', 'IE'])
     sum_ke = 0
     sum_ie = 0
-
-
