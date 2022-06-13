@@ -29,7 +29,7 @@ if 'df' not in st.session_state:
     st.session_state.df = pd.DataFrame(columns=['Food', 'Grams', 'KE', 'IE'])
 
 if addButton:
-    ke = round((int(carbs)*(int(grams)/100)),4)
+    ke = round((float(carbs)*(float(grams)/100)),4)
     ie = round(ke * float(factor), 4)
     df2 = pd.DataFrame({'Food': [food], 'Grams': [grams], 'KE': [ke], 'IE': [ie]})
     st.session_state.df = pd.concat([st.session_state.df, df2])
