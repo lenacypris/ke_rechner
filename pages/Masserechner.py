@@ -9,7 +9,7 @@ with st.form(key='columns_in_form'):
     with c2:
         trockenmasse = st.text_input('Trockenmasse')
     with c3:
-        zubereitete_masse = st.text_input('Masse zubereiten')
+        zubereitete_masse = st.text_input('Masse zubereitet')
     with c4:
         teller = st.text_input('Teller')
     calculateButton = st.form_submit_button(label = 'Calculate')
